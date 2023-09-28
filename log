@@ -48,3 +48,13 @@ heap.c:36:6: error: expected expression before ‘)’ token
       |      ^
 Compilation failed
 fcf6f12
+Thu 28 Sep 2023 05:36:54 PM UTC: 
+ heap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_push’:
+heap.c:36:6: error: expected expression before ‘)’ token
+   36 |   if(){}
+      |      ^
+Compilation failed
+a8a10df
