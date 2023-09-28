@@ -58,3 +58,14 @@ heap.c:36:6: error: expected expression before ‘)’ token
       |      ^
 Compilation failed
 a8a10df
+Thu 28 Sep 2023 05:43:54 PM UTC: 
+ heap.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_push’:
+heap.c:35:12: error: operation on ‘pq->size’ may be undefined [-Werror=sequence-point]
+   35 |   pq->size = pq->size++;
+      |   ~~~~~~~~~^~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+b6b936c
