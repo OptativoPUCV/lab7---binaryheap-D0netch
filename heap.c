@@ -26,23 +26,34 @@ void* heap_top(Heap* pq){
 
 
 void heap_push(Heap* pq, void* data, int priority){
-    if(pq->size == pq->capac){
-      pq = realloc(pq, (pq->capac*2)+1);
+  if (pq->size == pq->capac) {
+    pq->capac = (pq->capac * 2) + 1;
+    pq->heapArray = (heapElem*)realloc(pq->heapArray, pq->capac * sizeof(heapElem));
+    if (pq->heapArray == NULL) {
+      return;
     }
+  }
   
-  pq->heapArray[pq->size+1].data = data;
-  pq->heapArray[pq->size+1].priority = priority;
+  pq->heapArray[pq->size].data = data;
+  pq->heapArray[pq->size].priority = priority;
   pq->size++;
   
   int anterior = (pq->size-1)/2;
-  
-  while(pq->heapArray[pq->size].priority > pq->heapArray[anterior].priority){
-    heapElem Aux = pq->heapArray[anterior];
-    pq->heapArray[anterior] = pq->heapArray[pq->size];
-    pq->heapArray[pq->size] = Aux;
-  }
-}
+  int indice = pq->size - 1;
 
+  while (indice > 0) {
+    if (pq->heapArray[indice].priority > pq->heapArray[anterior].priority) {
+            // Intercambiar elementos
+            heapElem temp = pq->heapArray[indice];
+            pq->heapArray[indice] = pq->heapArray[anterior];
+            pq->heapArray[anterior] = temp;
+
+            indice = anterior;  // Mover el índice al padre
+        } else {
+            break;  // El montículo es válido
+        }
+    }
+}
 
 void heap_pop(Heap* pq){
 
