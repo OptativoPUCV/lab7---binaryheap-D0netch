@@ -15,3 +15,14 @@ heap.c:22:15: error: initialization of ‘void *’ from ‘int’ makes pointer
 cc1: all warnings being treated as errors
 Compilation failed
 081e8ff
+Thu 28 Sep 2023 05:29:44 PM UTC: 
+ heap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_top’:
+heap.c:22:15: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
+   22 |   void* top = (void*)pq->heapArray->priority;
+      |               ^
+cc1: all warnings being treated as errors
+Compilation failed
+69e4dd9
