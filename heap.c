@@ -38,19 +38,18 @@ void heap_push(Heap* pq, void* data, int priority){
   pq->heapArray[pq->size].priority = priority;
   pq->size++;
   
-  int anterior = (pq->size-1)/2;
   int indice = pq->size - 1;
 
   while (indice > 0) {
+    int anterior = (indice-1)/2;
     if (pq->heapArray[indice].priority > pq->heapArray[anterior].priority) {
-            // Intercambiar elementos
             heapElem temp = pq->heapArray[indice];
             pq->heapArray[indice] = pq->heapArray[anterior];
             pq->heapArray[anterior] = temp;
 
-            indice = anterior;  // Mover el índice al padre
+            indice = anterior;
         } else {
-            break;  // El montículo es válido
+            break; 
         }
     }
 }
